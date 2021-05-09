@@ -1,6 +1,12 @@
 # image-processing-api
-udacity-project1
-overview
+
+## overview
 this is an api for resize images dynamically. 
-path
+## path
 /images/filename=fjord&height=300&width=200
+
+## how to start
+npm run start
+
+## how to run test
+npm run test
