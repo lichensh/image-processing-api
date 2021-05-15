@@ -1,12 +1,15 @@
 import express from "express";
+import sharp from "sharp";
 import validator from "./routes/middleware/validator";
 import resize from "./utilities/imageUtil";
 const port = 3000;
 
 const app = express();
 
-app.get("/images", validator.validateParameters, async (req, res) => {
-  try {
+app.get(
+  "/images",
+  validator.validateParameters,
+  async (req, res): Promise<sharp.Sharp> => {
     res.type("image/jpg");
     const image = await resize.retrieveImage(
       res.locals.filename,
@@ -14,11 +17,9 @@ app.get("/images", validator.validateParameters, async (req, res) => {
       res.locals.width
     );
     image.pipe(res);
-  } catch (err) {
-    console.log(err);
-    res.status((err.status as number) || 500).send(err.message);
+    return image;
   }
-});
+);
 
 app.listen(port, () => {
   console.log("listening on ${port}");

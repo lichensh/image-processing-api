@@ -30,6 +30,6 @@ describe("Test image utility", () => {
   });
 
   it("images by second time properties should exist in cached", async () => {
-    expect(fs.existsSync(`assests/cache/fjord_400_400.jpg`)).toBeTruthy();
+    expect(fs.existsSync("assests/cache/fjord_400_400.jpg")).toBeTruthy();
   });
 });

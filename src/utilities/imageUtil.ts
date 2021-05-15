@@ -3,21 +3,14 @@ import fs from "fs";
 const fspromise = require("fs").promises;
 import sharp from "sharp";
 
+
+let i =0;
 // retrieve the requested image
 const retrieveImage = async (
   imageName: string,
   height: number,
   width: number
 ) => {
-  let isExist = await isExists(imageName);
-  if (!isExist) {
-    throw new Error(
-      JSON.stringify({
-        status: 404,
-        message: "Image not found.",
-      })
-    );
-  }
 
   let isCacheExist = await isCacheExists(imageName, height, width);
 
@@ -97,4 +90,5 @@ const isCacheExists = async (
 
 export = {
   retrieveImage,
+  isExists,
 };

@@ -1,6 +1,6 @@
-import _, { multiply } from 'lodash';
+import _, { multiply } from "lodash";
 
-declare module 'lodash'{
+declare module "lodash"{
 	interface lodasher{
 		multiply(a : number, b : number) : number;
 	}
