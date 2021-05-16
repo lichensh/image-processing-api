@@ -3,15 +3,13 @@ import fs from "fs";
 const fspromise = require("fs").promises;
 import sharp from "sharp";
 
-
-let i =0;
+let i = 0;
 // retrieve the requested image
 const retrieveImage = async (
   imageName: string,
   height: number,
   width: number
-) => {
-
+): Promise<sharp.Sharp> => {
   let isCacheExist = await isCacheExists(imageName, height, width);
 
   let imageUrl = getImageUrl(imageName, height, width, isCacheExist);

@@ -21,7 +21,7 @@ app.get(
   }
 );
 
-app.listen(port, () => {
+app.listen(port, (): void => {
   console.log("listening on ${port}");
 });
 

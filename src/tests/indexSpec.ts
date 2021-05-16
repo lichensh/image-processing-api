@@ -9,7 +9,7 @@ describe("Test endpoint responses", () => {
     const response = await request.get(
       "/images?filename=f&height=200&width=200"
     );
-    expect(response.status).toBe(500);
+    expect(response.status).toBe(404);
 
     done();
   });

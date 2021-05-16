@@ -5,12 +5,12 @@ const validateParameters = async (
   req: Request,
   res: Response,
   next: Function
-) => {
+): Promise<Response | void> => {
   if (!req.query.filename)
     return res.status(404).send("please provide a valid image name");
-  if (!req.query.height || ((req.query.height as unknown) as number) <= 0)
+  if (!req.query.height || !(((req.query.height as unknown) as number) > 0))
     return res.status(404).send("please provide a valid image height");
-  if (!req.query.width || ((req.query.width as unknown) as number) <= 0)
+  if (!req.query.width || !(((req.query.width as unknown) as number) > 0))
     return res.status(404).send("please provide a valid image width");
 
   let isExist = await imgUtil.isExists(req.query.filename as string);
